@@ -1,0 +1,43 @@
+@font-face {
+    font-family: MuseoSansRounded900;
+    src: url(fonts/MuseoSans/MuseoSansRounded900.otf);
+}
+
+@font-face {
+    font-family: RalewayRegular;
+    src: url(fonts/Raleway/static/Raleway-Regular.ttf);
+}
+
+html {
+    font-size: 62.5%;
+    font-family: RalewayRegular, sans-serif;
+
+    --primary-bg: #ffe0e0;
+    --primary-fg: #fe4500;
+    --secondary-bg: #b3a0a0;
+    --secondary-fg: #ffffff;
+    --nav-size: 12rem;
+    --section-height: calc(100vh - 18rem);
+}
+
+body {
+    font-size: 2rem;
+}
+
+.center {
+    max-width: 100%;
+    height: 100vh;
+    background-color: var(--primary-bg);
+    color: var(--primary-fg);
+    font-family: MuseoSansRounded900, sans-serif;
+    font-size: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.center img {
+    margin: -5rem 0 5rem;
+}
+
