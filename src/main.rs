@@ -1,5 +1,9 @@
 #![allow(non_snake_case)]
 
+mod components;
+mod content;
+
+use content::*;
 use dioxus::prelude::*;
 use tracing::Level;
 
@@ -9,6 +13,8 @@ enum Route {
     Home {},
     // #[route("/blog/:id")]
     // Blog { id: i32 },
+    // #[route("/shop")]
+    // Shop {},
 }
 
 fn main() {
@@ -32,23 +38,3 @@ fn App() -> Element {
 //         "Blog post {id}"
 //     }
 // }
-
-#[component]
-fn Home() -> Element {
-    rsx! {
-        // Link {
-        //     to: Route::Blog {
-        //         id: count()
-        //     },
-        //     "Go to blog"
-        // }
-        div {
-            class: "center",
-            img {
-                src: "images/fio.svg",
-                alt: "Fio"
-            }
-            h1 { "Coming soon..."}
-        }
-    }
-}
