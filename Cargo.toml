@@ -9,6 +9,7 @@ edition = "2021"
 [dependencies]
 
 dioxus = { version = "0.5", features = ["web", "router"] }
+indoc = "2.0.5"
 
 # Debug
 tracing = "0.1.40"
