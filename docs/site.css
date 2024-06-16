@@ -54,7 +54,11 @@ h2 {
 }
 
 h3 {
-    margin: 2rem 0 1rem;
+    margin: 2rem 0;
+}
+
+p {
+    margin: 2rem 0;
 }
 
 .title {
@@ -80,6 +84,7 @@ h3 {
 .horizontal-collapse {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .what-we-do .horizontal-collapse {
@@ -97,27 +102,69 @@ h3 {
     max-width: 90%;
 }
 
+img.circle {
+    border-radius: 100%;
+}
+
+.who-we-are img {
+    max-width: 25.6rem;
+    margin: 2rem;
+}
+
+.speech-bubble {
+    position: relative;
+    background: var(--primary-bg);
+    border-radius: 4rem;
+    padding: 2rem 3rem;
+    margin: 2rem;
+}
+
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+}
+
+.speech-bubble.left:after {
+    top: 50%;
+    right: 0;
+    border-right: 0;
+    margin-top: -2rem;
+    margin-right: -2rem;
+    border-left-color: var(--primary-bg);
+}
+
+.speech-bubble.right:after {
+    top: 50%;
+    left: 0;
+    border-left: 0;
+    margin-top: -2rem;
+    margin-left: -2rem;
+    border-right-color: var(--primary-bg);
+}
+
+
 .logos {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-around;
     align-content: center;
+
+    --logo-unit-size: 4rem;
 }
 
-.logos {
-    --logo-unit-size: 3rem;
+.logos .logo {
+    margin: 2rem;
+    text-align: center;
+    max-height: var(--logo-unit-size);
 }
 
-.logos .discord {
-    width: calc(var(--logo-unit-size) * 6);
+.logos .logo img {
+    max-height: 100%;
 }
 
 .logos .patreon-logo {
-    width: var(--logo-unit-size);
-
     margin-right: calc(var(--logo-unit-size) / 4);
-}
-
-.logos .patreon-wordmark {
-    width: calc(var(--logo-unit-size) * 4);
 }
