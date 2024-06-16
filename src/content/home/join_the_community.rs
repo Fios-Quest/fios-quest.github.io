@@ -10,19 +10,23 @@ pub fn JoinTheCommunity() -> Element {
                 class: "logos",
                 a {
                     class: "logo discord",
+                    href: "https://discord.gg/MDHcrNf4k8",
                     img { src: "logos/discord-logo-blue.svg", alt: "Discord Logo" }
                 }
                 a {
                     class: "logo patreon",
+                    href: "https://patreon.com/fios_quest",
                     img { src: "logos/PATREON_SYMBOL_1_BLACK_RGB.svg", alt: "Patreon logo", class: "patreon-logo" }
                     img { src: "logos/PATREON_WORDMARK_1_BLACK_RGB.svg" , alt: "Patreon wordmark", class: "patreon-wordmark" }
                 }
                 a {
                     class: "logo youtube",
+                    href: "https://www.youtube.com/@RustSimply",
                     img { src: "logos/yt_logo_rgb_light.png", alt: "YouTube logo", class: "youtube-logo" }
                 }
                 a {
                     class: "logo github",
+                    href: "https://github.com/Fios-Quest/",
                     img { src: "logos/GitHub_Logo.png", alt: "GitHub logo", class: "github-logo" }
                 }
             }
