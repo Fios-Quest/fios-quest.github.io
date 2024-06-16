@@ -35,6 +35,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: MuseoSansRounded900, sans-serif;
 }
 
+img {
+    max-width: 80vw;
+}
+
 span {
     display: inline-block;
     color: black;
@@ -66,6 +70,7 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 
     max-width: 100%;
     background-color: var(--primary-bg);
@@ -95,11 +100,12 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    margin: 2rem;
 }
 
 .what-we-do .horizontal-collapse img {
-    max-width: 90%;
+    max-width: 100%;
 }
 
 img.circle {
@@ -109,6 +115,26 @@ img.circle {
 .who-we-are img {
     max-width: 25.6rem;
     margin: 2rem;
+}
+
+.stack {
+    display: grid !important;
+    justify-items: center;
+    align-items: center;
+}
+
+.stack>* {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+.play-icon {
+    width: 12rem;
+}
+
+.label {
+    font-size: 5rem;
+    color: white;
 }
 
 .speech-bubble {
@@ -167,4 +193,34 @@ img.circle {
 
 .logos .patreon-logo {
     margin-right: calc(var(--logo-unit-size) / 4);
+}
+
+@media (max-width: 1000px) {
+    .horizontal-collapse {
+        flex-direction: column;
+    }
+
+    .speech-bubble.left:after {
+        top: 100%;
+        right: 50%;
+        border: 20px solid transparent;
+        border-bottom: 0;
+        border-top-color: var(--primary-bg);
+        margin-top: 0;
+    }
+
+    .speech-bubble.right:after {
+        top: 100%;
+        left: 50%;
+        border: 20px solid transparent;
+        border-top: 0;
+        border-bottom-color: var(--primary-bg);
+        margin: -20px -20px 0 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .logos {
+        grid-template-columns: 1fr;
+    }
 }

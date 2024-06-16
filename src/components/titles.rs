@@ -1,18 +1,29 @@
 use dioxus::prelude::*;
 
+fn to_id(input: &str) -> String {
+    input.chars().filter_map(|c| match c {
+        c if c.is_alphanumeric() && c.is_ascii() => Some(c.to_ascii_lowercase()),
+        ' ' => Some('-'),
+        _ => None,
+    }).collect()
+}
+
 #[component]
 pub fn ToSpans(title: String) -> Element {
     rsx! {
         for word in title.split(' ') {
-            " " span { "{word}" } " "
+            " "
+            span { "{word}" }
+            " "
         }
     }
 }
 
 #[component]
 pub fn H1(title: String) -> Element {
+    let id = to_id(&title);
     rsx! {
-        h1 {
+        h1 { id,
             ToSpans { title }
         }
     }
@@ -20,8 +31,9 @@ pub fn H1(title: String) -> Element {
 
 #[component]
 pub fn H2(title: String) -> Element {
+    let id = to_id(&title);
     rsx! {
-        h2 {
+        h2 { id,
             ToSpans { title }
         }
     }
@@ -29,8 +41,9 @@ pub fn H2(title: String) -> Element {
 
 #[component]
 pub fn H3(title: String) -> Element {
+    let id = to_id(&title);
     rsx! {
-        h3 {
+        h3 { id,
             ToSpans { title }
         }
     }
