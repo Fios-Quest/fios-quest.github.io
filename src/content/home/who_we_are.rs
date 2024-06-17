@@ -34,7 +34,7 @@ pub fn WhoWeAre() -> Element {
                         { indoc! {
                             "Since Fio is... well, a crab, I'm here to support her in her quest to
                             demystify software engineering. I write the book and scripts, film and
-                            edits the videos and provide technical support."
+                            edit the videos and provide technical support."
                         }}
                     }
                 }
