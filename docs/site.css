@@ -150,7 +150,7 @@ img.circle {
     position: absolute;
     width: 0;
     height: 0;
-    border: 20px solid transparent;
+    border: 2rem solid transparent;
 }
 
 .speech-bubble.left:after {
@@ -203,19 +203,19 @@ img.circle {
     .speech-bubble.left:after {
         top: 100%;
         right: 50%;
-        border: 20px solid transparent;
+        border: 2rem solid transparent;
         border-bottom: 0;
         border-top-color: var(--primary-bg);
         margin-top: 0;
     }
 
     .speech-bubble.right:after {
-        top: 100%;
+        top: 0;
         left: 50%;
-        border: 20px solid transparent;
+        border: 2rem solid transparent;
         border-top: 0;
         border-bottom-color: var(--primary-bg);
-        margin: -20px -20px 0 0;
+        margin: -2rem 0 0 -2rem;
     }
 }
 
