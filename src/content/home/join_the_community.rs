@@ -30,7 +30,7 @@ pub fn JoinTheCommunity() -> Element {
                 }
                 a {
                     class: "logo youtube",
-                    href: "https://www.youtube.com/@RustSimply",
+                    href: "https://www.youtube.com/@FiosQuest",
                     img {
                         src: "logos/yt_logo_rgb_light.png",
                         alt: "YouTube logo",
