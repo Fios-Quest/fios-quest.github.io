@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  outDir: target/dx/gisleburt-github-io/release/web/public
+  outDir: target/dx/fios-quest-github-io/release/web/public
   cname: danielmason.com
 
 jobs:
