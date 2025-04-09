@@ -1,6 +1,7 @@
 name: Deploy to GitHub Pages
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -14,27 +15,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions-rs/toolchain@v1.0.6
         with:
           toolchain: stable
           profile: minimal
           target: wasm32-unknown-unknown
           override: true
+
       - uses: Swatinem/rust-cache@v2
+
+      - uses: cargo-bins/cargo-binstall@main
+
       - name: Install Dioxus-CLI
-        shell: bash
-        run: cargo install dioxus-cli
+        run: cargo binstall dioxus-cli
 
       - name: Build Project 🎁
-        shell: bash
         run: dx bundle --platform web --ssg && cp ./${{ env.outDir }}/index.html ./${{ env.outDir }}/404.html
 
       - name: Add CNAME
-        shell: bash
-        if: "${{ env.cname != '' }}"
+        if: "${{ env.cname != '' && github.ref == 'refs/heads/main' }}"
         run: cd ${{ env.outDir }} && echo "${{ env.cname }}" > CNAME
 
       - name: Deploy Project 🚀
+        if: "${{ github.ref == 'ref/head/master' }}"
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
