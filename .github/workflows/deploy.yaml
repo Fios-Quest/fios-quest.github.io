@@ -28,7 +28,7 @@ jobs:
       - uses: cargo-bins/cargo-binstall@main
 
       - name: Install Dioxus-CLI
-        run: cargo binstall dioxus-cli
+        run: cargo binstall dioxus-cli --force
 
       - name: Build Project 🎁
         run: dx bundle --platform web --ssg && cp ./${{ env.outDir }}/index.html ./${{ env.outDir }}/404.html
