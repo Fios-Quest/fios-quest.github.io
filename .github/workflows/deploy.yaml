@@ -8,7 +8,7 @@ on:
 
 env:
   outDir: target/dx/fios-quest-github-io/release/web/public
-  cname: danielmason.com
+  cname: fios-quest.com
 
 jobs:
   build-deploy:
