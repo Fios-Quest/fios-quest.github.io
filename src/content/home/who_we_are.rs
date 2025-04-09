@@ -19,12 +19,12 @@ pub fn WhoWeAre() -> Element {
                         }}
                     }
                 }
-                img { src: "images/fio-round.svg", alt: "Fio" }
+                img { src: asset!("assets/images/fio-round.svg"), alt: "Fio" }
             }
 
             HorizontalCollapse { 
                 img {
-                    src: "images/daniel.png",
+                    src: asset!("assets/images/daniel.png"),
                     alt: "Daniel",
                     class: "circle"
                 }
