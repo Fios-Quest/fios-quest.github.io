@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  outDir: target/dx/gisleburt-github-io/release/web/public
+  cname: danielmason.com
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1.0.6
+        with:
+          toolchain: stable
+          profile: minimal
+          target: wasm32-unknown-unknown
+          override: true
+      - uses: Swatinem/rust-cache@v2
+      - name: Install Dioxus-CLI
+        shell: bash
+        run: cargo install dioxus-cli
+
+      - name: Build Project 🎁
+        shell: bash
+        run: dx bundle --platform web --ssg && cp ./${{ env.outDir }}/index.html ./${{ env.outDir }}/404.html
+
+      - name: Add CNAME
+        shell: bash
+        if: "${{ env.cname != '' }}"
+        run: cd ${{ env.outDir }} && echo "${{ env.cname }}" > CNAME
+
+      - name: Deploy Project 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages
+          folder: ${{ env.outDir }}
+          clean: false

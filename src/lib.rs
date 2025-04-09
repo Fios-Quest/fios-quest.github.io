@@ -5,10 +5,9 @@ mod content;
 
 use content::*;
 use dioxus::prelude::*;
-use tracing::Level;
 
 #[derive(Clone, Routable, Debug, PartialEq)]
-enum Route {
+pub enum Route {
     #[route("/")]
     Home {},
     // #[route("/blog/:id")]
@@ -17,15 +16,7 @@ enum Route {
     // Shop {},
 }
 
-fn main() {
-    // Init logger
-    if cfg!(debug_assertions) {
-        dioxus_logger::init(Level::INFO).expect("failed to init logger");
-    }
-    launch(App);
-}
-
-fn App() -> Element {
+pub fn App() -> Element {
     rsx! {
         Router::<Route> {}
     }

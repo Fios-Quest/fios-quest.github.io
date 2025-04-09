@@ -26,19 +26,19 @@ pub fn WhatWeDo() -> Element {
                     a { href: "https://www.youtube.com/playlist?list=PLW2L8KbM0O7aRi_Bt4YE1JuW9EdMs0ztR",
                         Stack { 
                             img {
-                                src: "./images/iriss-youtube.jpeg",
+                                src: asset!("assets/images/iriss-youtube.jpeg"),
                                 alt: "IRISS YouTube Playlist"
                             }
                             img {
                                 class: "play-icon",
-                                src: "./logos/yt_icon_rgb.png"
+                                src: asset!("assets/logos/yt_icon_rgb.png")
                             }
                         }
                     }
                 }
                 div {
                     a { href: "/idiomatic-rust-in-simple-steps", Stack { 
-                        img { src: "./images/iriss-book.png", alt: "IRISS Book" }
+                        img { src: asset!("assets/images/iriss-book.png"), alt: "IRISS Book" }
                         div { class: "label", "Online Book" }
                     } }
                 }

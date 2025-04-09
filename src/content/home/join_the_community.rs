@@ -10,7 +10,7 @@ pub fn JoinTheCommunity() -> Element {
                     class: "logo discord",
                     href: "https://discord.gg/MDHcrNf4k8",
                     img {
-                        src: "logos/discord-logo-blue.svg",
+                        src: asset!("assets/logos/discord-logo-blue.svg"),
                         alt: "Discord Logo"
                     }
                 }
@@ -18,12 +18,12 @@ pub fn JoinTheCommunity() -> Element {
                     class: "logo patreon",
                     href: "https://patreon.com/fios_quest",
                     img {
-                        src: "logos/PATREON_SYMBOL_1_BLACK_RGB.svg",
+                        src: asset!("assets/logos/PATREON_SYMBOL_1_BLACK_RGB.svg"),
                         alt: "Patreon logo",
                         class: "patreon-logo"
                     }
                     img {
-                        src: "logos/PATREON_WORDMARK_1_BLACK_RGB.svg",
+                        src: asset!("assets/logos/PATREON_WORDMARK_1_BLACK_RGB.svg"),
                         alt: "Patreon wordmark",
                         class: "patreon-wordmark"
                     }
@@ -32,7 +32,7 @@ pub fn JoinTheCommunity() -> Element {
                     class: "logo youtube",
                     href: "https://www.youtube.com/@FiosQuest",
                     img {
-                        src: "logos/yt_logo_rgb_light.png",
+                        src: asset!("assets/logos/yt_logo_rgb_light.png"),
                         alt: "YouTube logo",
                         class: "youtube-logo"
                     }
@@ -41,7 +41,7 @@ pub fn JoinTheCommunity() -> Element {
                     class: "logo github",
                     href: "https://github.com/Fios-Quest/",
                     img {
-                        src: "logos/GitHub_Logo.png",
+                        src: asset!("assets/logos/GitHub_Logo.png"),
                         alt: "GitHub logo",
                         class: "github-logo"
                     }
