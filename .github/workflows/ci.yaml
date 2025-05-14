@@ -32,7 +32,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: "${{ github.ref == 'refs/heads/main' }}"
         with:
-          name: ${{ env.GITHUB_REPOSITORY }}
           path: ${{ env.outDir }}
           compression-level: 9 # maximum compression
           if-no-files-found: error
