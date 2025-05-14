@@ -1,44 +1,30 @@
-name: Deploy to GitHub Pages
+name: CD
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: [CI]
+    branches: [main]
+    types: [completed]
 
 env:
-  outDir: target/dx/fios-quest-github-io/release/web/public
   cname: fios-quest.com
+  outDir: outdir
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions-rs/toolchain@v1.0.6
+      - uses: actions/download-artifact@v4
         with:
-          toolchain: stable
-          profile: minimal
-          target: wasm32-unknown-unknown
-          override: true
-
-      - uses: Swatinem/rust-cache@v2
-
-      - uses: cargo-bins/cargo-binstall@main
-
-      - name: Install Dioxus-CLI
-        run: cargo binstall dioxus-cli --force
-
-      - name: Build Project 🎁
-        run: dx bundle --platform web --ssg && cp ./${{ env.outDir }}/index.html ./${{ env.outDir }}/404.html
+          name: ${{ env.GITHUB_REPOSITORY }}
+          path: ${{ env.outDir }}
 
       - name: Add CNAME
-        if: "${{ env.cname != '' && github.ref == 'refs/heads/main' }}"
+        if: "${{ env.cname != '' }}"
         run: cd ${{ env.outDir }} && echo "${{ env.cname }}" > CNAME
 
       - name: Deploy Project 🚀
-        if: "${{ github.ref == 'refs/heads/main' }}"
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages

@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+
+env:
+  outDir: target/dx/fios-quest-github-io/release/web/public
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions-rs/toolchain@v1.0.6
+        with:
+          toolchain: stable
+          profile: minimal
+          target: wasm32-unknown-unknown
+          override: true
+
+      - uses: Swatinem/rust-cache@v2
+
+      - uses: cargo-bins/cargo-binstall@main
+
+      - name: Install Dioxus-CLI
+        run: cargo binstall dioxus-cli --force
+
+      - name: Build Project 🎁
+        run: dx bundle --platform web --ssg && cp ./${{ env.outDir }}/index.html ./${{ env.outDir }}/404.html
+
+      - uses: actions/upload-artifact@v4
+        if: "${{ github.ref == 'refs/heads/main' }}"
+        with:
+          name: ${{ env.GITHUB_REPOSITORY }}
+          path: ${{ env.outDir }}
+          compression-level: 9 # maximum compression
+          if-no-files-found: error
+          retention-days: 2
