@@ -1,38 +1,87 @@
-name: CI
-
 on:
   push:
 
 env:
-  outDir: target/dx/fios-quest-github-io/release/web/public
+  CARGO_TERM_COLOR: always
+
+name: CI
 
 jobs:
+  check:
+    name: cargo check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain:
+          - stable
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+      - run: cargo check --verbose
+
   build:
+    name: cargo build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain:
+          - stable
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+      - run: cargo build --verbose
+
+  test:
+    name: cargo test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain:
+          - stable
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+      - run: cargo test --verbose
+
+  fmt:
+    name: cargo fmt
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain:
+          - stable
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+      - run: cargo fmt --check
+
+  clippy:
+    name: cargo clippy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain:
+          - stable
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+      - run: cargo clippy -- -D warnings
+
+  dx-fmt:
+    name: dx fmt
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions-rs/toolchain@v1.0.6
-        with:
-          toolchain: stable
-          profile: minimal
-          target: wasm32-unknown-unknown
-          override: true
-
+      - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
-
       - uses: cargo-bins/cargo-binstall@main
+      - run: rustup update ${{ env.RUST_TOOLCHAIN }} && rustup default ${{ env.RUST_TOOLCHAIN }}
+      - run: cargo binstall dioxus-cli --force
+      - run: dx fmt --check
 
-      - name: Install Dioxus-CLI
-        run: cargo binstall dioxus-cli --force
 
-      - name: Build Project 🎁
-        run: dx bundle --platform web --ssg && cp ./${{ env.outDir }}/index.html ./${{ env.outDir }}/404.html
 
-      - uses: actions/upload-artifact@v4
-        if: "${{ github.ref == 'refs/heads/main' }}"
-        with:
-          path: ${{ env.outDir }}
-          compression-level: 9 # maximum compression
-          if-no-files-found: error
-          retention-days: 2

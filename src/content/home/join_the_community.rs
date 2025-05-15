@@ -1,6 +1,5 @@
 use crate::components::*;
 use dioxus::prelude::*;
-
 pub fn JoinTheCommunity() -> Element {
     rsx! {
         section { class: "join-the-community",
@@ -11,7 +10,7 @@ pub fn JoinTheCommunity() -> Element {
                     href: "https://discord.gg/MDHcrNf4k8",
                     img {
                         src: asset!("assets/logos/discord-logo-blue.svg"),
-                        alt: "Discord Logo"
+                        alt: "Discord Logo",
                     }
                 }
                 a {
@@ -20,12 +19,12 @@ pub fn JoinTheCommunity() -> Element {
                     img {
                         src: asset!("assets/logos/PATREON_SYMBOL_1_BLACK_RGB.svg"),
                         alt: "Patreon logo",
-                        class: "patreon-logo"
+                        class: "patreon-logo",
                     }
                     img {
                         src: asset!("assets/logos/PATREON_WORDMARK_1_BLACK_RGB.svg"),
                         alt: "Patreon wordmark",
-                        class: "patreon-wordmark"
+                        class: "patreon-wordmark",
                     }
                 }
                 a {
@@ -34,7 +33,7 @@ pub fn JoinTheCommunity() -> Element {
                     img {
                         src: asset!("assets/logos/yt_logo_rgb_light.png"),
                         alt: "YouTube logo",
-                        class: "youtube-logo"
+                        class: "youtube-logo",
                     }
                 }
                 a {
@@ -43,7 +42,7 @@ pub fn JoinTheCommunity() -> Element {
                     img {
                         src: asset!("assets/logos/GitHub_Logo.png"),
                         alt: "GitHub logo",
-                        class: "github-logo"
+                        class: "github-logo",
                     }
                 }
             }
