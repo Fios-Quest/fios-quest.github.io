@@ -1,6 +1,18 @@
 use crate::components::*;
 use dioxus::prelude::*;
-use indoc::indoc;
+
+const FIO_INTRO: &str = "
+    I'm on a quest to help people learn the complexities of software
+    engineering by demystifying the hard bits. Learning software engineering
+    can be challenging, but I believe in you!
+";
+
+const DANIEL_INTRO: &str = "
+    Since Fio is... well, a crab, I'm here to support her in her quest to
+    demystify software engineering. I write the book and scripts, film and
+    edit the videos and provide technical support.
+";
+
 pub fn WhoWeAre() -> Element {
     rsx! {
         section { class: "who-we-are",
@@ -8,15 +20,7 @@ pub fn WhoWeAre() -> Element {
             HorizontalCollapse {
                 SpeechBubble { bubble_type: SpeechBubbleType::Left,
                     H3 { title: "Hi, I'm Fio" }
-                    p {
-                        {
-                            indoc! {
-                                "I'm on a quest to help people learn the complexities of software
-                                                                                                                                                                                                                                                                                                                                                            engineering by demystifying the hard bits. Learning software engineering
-                                                                                                                                                                                                                                                                                                                                                            can be challenging, but I believe in you!"
-                            }
-                        }
-                    }
+                    p { {FIO_INTRO} }
                 }
                 img { src: asset!("assets/images/fio-round.svg"), alt: "Fio" }
             }
@@ -28,15 +32,7 @@ pub fn WhoWeAre() -> Element {
                 }
                 SpeechBubble { bubble_type: SpeechBubbleType::Right,
                     H3 { title: "Hello, I'm Daniel" }
-                    p {
-                        {
-                            indoc! {
-                                "Since Fio is... well, a crab, I'm here to support her in her quest to
-                                                                                                                                                                                                                                                                                                                                                            demystify software engineering. I write the book and scripts, film and
-                                                                                                                                                                                                                                                                                                                                                            edit the videos and provide technical support."
-                            }
-                        }
-                    }
+                    p { {DANIEL_INTRO} }
                 }
             }
         }
