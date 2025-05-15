@@ -8,6 +8,7 @@ env:
 
 jobs:
   build:
+    name: dx build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
