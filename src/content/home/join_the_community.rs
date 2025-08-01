@@ -7,7 +7,7 @@ pub fn JoinTheCommunity() -> Element {
             div { class: "logos",
                 a {
                     class: "logo discord",
-                    href: "https://discord.gg/MDHcrNf4k8",
+                    href: "https://discord.gg/bBAXUNmryp",
                     img {
                         src: asset!("assets/logos/discord-logo-blue.svg"),
                         alt: "Discord Logo",
